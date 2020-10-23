@@ -4,19 +4,32 @@
 
 import requests
 import json
+import sys
 import AuthenticationToken
 from IOL_Operations import *
+from OtherFunctions import *
 
 #### Aca arranca
 if __name__ == "__main__":
-	
-	#Genero token
+
 	#Tenes que autorizar el API para usar el user y la pass
 	token_ok = False
+	#Chequeo si tengo credentiales en la CLI
+	if GetCredentialsCLI():
+		username=GetCredentialsCLI()["user"]
+		password=GetCredentialsCLI()["pwd"]
+		try:
+			#Genero token
+			token=AuthenticationToken.AuthenticationToken(username,password)
+			token_ok = True
+		except KeyError:
+			print('Error de token. Reingrese los datos')
+	#Sino tengo token con la CLI o no hay argumentos en la CLI, pido por standard input
 	while not token_ok:
 		username = input('Usuario: ')
 		password = input('Contraseña: ')
 		try:
+			#Genero token
 			token=AuthenticationToken.AuthenticationToken(username,password)
 			token_ok = True
 		except KeyError:
