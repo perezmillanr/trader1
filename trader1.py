@@ -71,21 +71,25 @@ def getCotizacion(token,especie,plazo):
 
 #Genero token
 #Tenes que autorizar el API para usar el user y la pass
-username = input('Usuario: ')
-password = input('Contraseña: ')
-token=AuthenticationToken(username,password)
+token_ok = False
+
+while not token_ok:
+	username = input('Usuario: ')
+	password = input('Contraseña: ')
+	try:
+		token=AuthenticationToken(username,password)
+		token_ok = True
+	except KeyError:
+		print('Error de token. Reingrese los datos')
 
 #Levanto la cotizacion
 
 accion = input('Ingrese el pelpa (n para salir): ')
 
-while (accion != 'n'):	
+while accion != 'n':	
 	x=getCotizacion(token,accion,"t0")
 	Cotizacion=x.text	
 	print(x)
 	print(Cotizacion)
-	accion = input('Ingresá accion: ')
-
-
-
+	accion = input('Ingrese el pelpa (n para salir): ')
 
