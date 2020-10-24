@@ -18,6 +18,8 @@ class AuthenticationToken:
 		self.issuedate=response[".issued"]
 		self.expirationdate=response[".expires"]
 
+		print(self.expirationdate)
+
 	def getRefreshToken(self):
 		pass
 	def getBearerToken(self):
