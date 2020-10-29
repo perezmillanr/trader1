@@ -35,13 +35,36 @@ if __name__ == "__main__":
 		except KeyError:
 			print('Error de token. Reingrese los datos')
 
+
+	while True:
+		accion = input('Ingrese Comando ("help" para ver los comandos): ')			
+
+		if accion.lower()=="cot":
+			especie = input('Ingrese el especie (n para salir): ')
+			if especie == 'n':	
+				continue
+			else:
+				t_ = input('Ingrese el tiempo (t0,t1,t2): ')
+				print(getCotizacion(token,accion,t_))
+				print(getCotizacion(token,accion,t_).text)
+				continue
+		if accion.lower()=="help":
+			print("Comandos:")
+			print("cot - Obtener Cotizacion de una Especie")
+			print("salir - Salir de la aplicación")
+			print("help - Obtener Lista de Comandos")
+		if accion.lower()=="salir":
+			break
+		print ("Comando no reconocido")
+
+
+
 	#Levanto la cotizacion
 
-	accion = input('Ingrese el pelpa (n para salir): ')
-
-	while accion != 'n':	
-		x=getCotizacion(token,accion,"t0")
-		Cotizacion=x.text	
-		print(x)
-		print(Cotizacion)
-		accion = input('Ingrese el pelpa (n para salir): ')
+#	accion = input('Ingrese el pelpa (n para salir): ')
+#	while accion != 'n':	
+#		x=getCotizacion(token,accion,"t0")
+#		Cotizacion=x.text	
+#		print(x)
+#		print(Cotizacion)
+#		accion = input('Ingrese el pelpa (n para salir): ')

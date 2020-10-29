@@ -38,3 +38,16 @@ def getCotizacion(token,especie,plazo):
 	return requests.get(endpoint,data=param,headers=header)
 
 
+def getEstadoCuenta(token):
+	"""Devuelve el estado de la cuenta"""
+	baseurl="https://api.invertironline.com"
+	endpoint=baseurl+"/api/v2/estadocuenta"
+	header={"Accept":"application/json",
+	        'Authorization':"Bearer "+token.getBearerToken()
+	        }
+
+	param={'api_key':token.getBearerToken()}
+
+	return requests.get(endpoint,data=param,headers=header)
+
+
