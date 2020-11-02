@@ -7,6 +7,12 @@ Quimey Ramos
 
 Año: 2020
 
+TO-DO:
+
+- Dashboards
+- Optimizacion del Token
+- Explorar otros mercaods, Rofex, etc
+
 
 Usage:
 
