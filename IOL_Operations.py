@@ -2,7 +2,6 @@ import requests
 import json
 import datetime
 #def getInstrumento_FIXME():
-	"""Es una verga, no trae nada copado"""
 
 #	mercado="BYMA"
 #	especie="PAMP"
@@ -59,7 +58,6 @@ def getEstadoCuenta(token):
 	return requests.get(endpoint,data=param,headers=header)
 
 #def getOperacion_FIXME(token,id):
-	"""Devuelve el estado de una operación"""
 #	baseurl="https://api.invertironline.com"
 #	endpoint=baseurl+"/api/v2/operacion/"+str(id)
 #	header={"Accept":"application/json",
