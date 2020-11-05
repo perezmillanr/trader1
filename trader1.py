@@ -8,6 +8,7 @@ import sys
 import AuthenticationToken as AuthTK
 from IOL_Operations import *
 from OtherFunctions import *
+from Dashboard import *
 
 #### Aca arranca
 if __name__ == "__main__":
