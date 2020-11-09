@@ -40,7 +40,8 @@ if __name__ == "__main__":
 	print('Ingrese comando ("help" para ver los comandos):')
 	while True:
 		comando = input('>> ')			
-		if comando.lower()=="cot":
+		comando=comando.lower()
+		if comando=="cot":
 			especie = input('Ingrese el especie (n para cancelar): ')
 			if especie == 'n':	
 				continue
@@ -48,7 +49,7 @@ if __name__ == "__main__":
 				t_ = input('Ingrese plazo (t0,t1,t2): ')
 				print(getCotizacion(token,especie,t_).text)
 				continue
-		if comando.lower()=="cotp":
+		if comando=="cotp":
 			especie = input('Ingrese el especie (n para cancelar): ')
 			if especie == 'n':	
 				continue
@@ -58,7 +59,7 @@ if __name__ == "__main__":
 				continue
 
 
-		if comando.lower()=="del":
+		if comando=="del":
 			operacion = input('Ingrese la orden (n para cancelar): ')
 			if operacion == 'n':	
 				continue
@@ -66,7 +67,7 @@ if __name__ == "__main__":
 				print(delOperacion(token,operacion))
 				continue
 
-		if comando.lower()=="comprar":
+		if comando=="comprar":
 			especie = input('Ingrese el especie (n para cancelar): ')
 			if especie == 'n':	
 				continue
@@ -79,22 +80,19 @@ if __name__ == "__main__":
 			cantidad = input('Ingrese cantidad (n para cancelar):')
 			if cantidad == 'n':	
 				continue
-
 			print(comprar(token,especie,plazo,precio,cantidad).text)
 			continue
-
-		if comando.lower()=="estado":
+		if comando=="estado":
 				print(getEstadoCuenta(token).text)
 				continue
-
-		if comando.lower().startswith("getop"):
-			if comando.lower()=="getop":
+		if comando.startswith("getop"):
+			if comando=="getop":
 				print(getOperaciones(token).text)
 			else:
 				id=int(comando.split()[-1])
 				print(id)
 			continue	
-		if comando.lower()=="help":
+		if comando=="help":
 			print("Comandos:")
 			print("cot - Obtener Cotizacion de una Especie")
 			print("cotp - Obtener ultimo precio de una Especie")
@@ -107,9 +105,6 @@ if __name__ == "__main__":
 		if comando.lower()=="salir":
 			break
 		print ("Comando no reconocido")
-
-
-
 	#Levanto la cotizacion
 
 #	accion = input('Ingrese el pelpa (n para salir): ')
