@@ -12,7 +12,8 @@ from Dashboard import *
 
 #### Aca arranca
 if __name__ == "__main__":
-
+	#Levanto el Dashboard
+	dash=Dashboard()
 	#Tenes que autorizar el API para usar el user y la pass
 	token_ok = False
 	#Chequeo si tengo credentiales en la CLI
@@ -49,6 +50,35 @@ if __name__ == "__main__":
 				t_ = input('Ingrese plazo (t0,t1,t2): ')
 				print(getCotizacion(token,especie,t_).text)
 				continue
+
+		if comando=="addexp":
+			dash.addExpression(input ("Inserte Expresión: "))
+			continue
+		if comando=="remexp":
+			dash.removeExpression(input ("Inserte Expresión a remover: "))
+			continue			
+		if comando=="dashexp":
+			dash.showdash()
+			continue
+		if comando=="add":
+			especie = input('Ingrese el especie para añadir (n para cancelar): ')
+			if especie == 'n':	
+				continue
+			else:
+				t_ = input('Ingrese plazo (t0,t1,t2): ')
+				dash.addEspecie([especie,t_])
+				print()
+				continue
+		if comando=="rem":
+			especie = input('Ingrese el especie para remover (n para cancelar): ')
+			if especie == 'n':	
+				continue
+			else:
+				dash.removeEspecie(especie.upper())
+				continue
+		if comando=="dash":
+			dash(token)
+			continue
 		if comando=="cotp":
 			especie = input('Ingrese el especie (n para cancelar): ')
 			if especie == 'n':	
@@ -101,6 +131,10 @@ if __name__ == "__main__":
 			print("estado - Obtener Estado de cuenta")
 			print("salir - Salir de la aplicación")
 			print("help - Obtener Lista de Comandos")
+			print("\nComandos de Dashboard:")
+			print("add - Añade especie al Dashboard")
+			print("rem - Remueve especie al Dashboard")
+			print("dash - Muestra el dashboard")
 			continue
 		if comando.lower()=="salir":
 			break
